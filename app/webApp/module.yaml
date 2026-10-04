@@ -1,0 +1,12 @@
+product: wasm-js/app
+
+apply:
+  - //common.module-template.yaml
+
+settings:
+  compose:
+    enabled: true
+    version: 1.11.1
+
+dependencies:
+  - //app/webUi

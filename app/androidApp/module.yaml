@@ -1,0 +1,25 @@
+product: android/app
+
+apply:
+  - //common.module-template.yaml
+
+settings:
+  android:
+    namespace: com.example.template
+    applicationId: com.example.template
+    compileSdk: 36
+    minSdk: 24
+    targetSdk: 36
+    versionCode: 1
+    versionName: "1.0"
+    resourcePackaging:
+      excludes:
+        - /META-INF/{AL2.0,LGPL2.1}
+  compose:
+    enabled: true
+    version: 1.11.1
+
+dependencies:
+  - //app/shared
+  - $libs.androidx.activity.compose
+  - $libs.compose.uiToolingPreview

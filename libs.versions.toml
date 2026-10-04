@@ -1,0 +1,48 @@
+# Versions pinned via settings in module.yaml / templates:
+#   kotlin 2.4.0        -> settings.kotlin.version (common.module-template.yaml)
+#   Compose 1.11.1      -> settings.compose.version
+#   Ktor 3.5.0          -> settings.ktor.version
+
+[versions]
+android-compileSdk = "36"
+android-minSdk = "24"
+android-targetSdk = "36"
+androidx-activity = "1.13.0"
+androidx-appcompat = "1.7.1"
+androidx-core = "1.19.0"
+androidx-espresso = "3.7.0"
+androidx-lifecycle = "2.11.0-beta01"
+androidx-testExt = "1.3.0"
+junit = "4.13.2"
+kotlin-wrappers = "2026.6.1"
+kotlinx-coroutines = "1.11.0"
+logback = "1.5.34"
+material3 = "1.11.0-alpha07"
+
+[libraries]
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version = "2.4.0" }
+kotlin-testJunit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version = "2.4.0" }
+# Bumped above 1.8.0 on purpose: yamlkt 0.13.0 pulls kotlin-stdlib-jdk7/jdk8 1.8.0, whose
+# Tencent-mirror `.sha512` files are corrupt (breaks the Toolchain's checksum verification).
+# 2.0.0 is the empty relocation jar; the real kotlin-stdlib is still provided by Kotlin 2.4.0.
+kotlin-stdlib-jdk7 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk7", version = "2.0.0" }
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version = "2.0.0" }
+junit = { module = "junit:junit", version.ref = "junit" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
+androidx-testExt-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-testExt" }
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-espresso" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+compose-uiTooling = { module = "org.jetbrains.compose.ui:ui-tooling", version = "1.11.1" }
+compose-uiToolingPreview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version = "1.11.1" }
+androidx-lifecycle-viewmodelCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "material3" }
+kotlinx-coroutinesSwing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+ktor-serverCore = { module = "io.ktor:ktor-server-core-jvm", version = "3.5.0" }
+ktor-serverNetty = { module = "io.ktor:ktor-server-netty-jvm", version = "3.5.0" }
+ktor-serverTestHost = { module = "io.ktor:ktor-server-test-host-jvm", version = "3.5.0" }
+ktor-serverConfigYaml = { module = "io.ktor:ktor-server-config-yaml", version = "3.5.0" }
+ktor-serverContentNegotiation = { module = "io.ktor:ktor-server-content-negotiation", version = "3.5.0" }
+wrappers-browser = { module = "org.jetbrains.kotlin-wrappers:kotlin-browser", version.ref = "kotlin-wrappers" }

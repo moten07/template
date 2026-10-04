@@ -1,0 +1,17 @@
+product:
+  type: kmp/lib
+  platforms: [js, wasmJs]
+
+apply:
+  - //common.module-template.yaml
+
+settings:
+  compose:
+    enabled: true
+    version: 1.11.1
+    resources:
+      packageName: com.example.template.webapp.resources
+
+dependencies:
+  - //app/shared: exported
+  - $compose.ui: exported

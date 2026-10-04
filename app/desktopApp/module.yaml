@@ -1,0 +1,20 @@
+product: jvm/app
+
+layout: maven-like
+
+apply:
+  - //common.module-template.yaml
+
+settings:
+  jvm:
+    mainClass: com.example.template.MainKt
+  compose:
+    enabled: true
+    version: 1.11.1
+
+dependencies:
+  - //app/shared
+  - $compose.desktop.currentOs
+  - $libs.kotlinx.coroutinesSwing
+  - $libs.compose.uiToolingPreview
+  - $compose.components.resources

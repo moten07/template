@@ -1,0 +1,33 @@
+product:
+  type: kmp/lib
+  platforms: [jvm, android, js, wasmJs, iosArm64, iosSimulatorArm64]
+
+apply:
+  - //common.module-template.yaml
+
+settings:
+  android:
+    namespace: com.example.template.app.shared
+    compileSdk: 36
+    minSdk: 24
+  compose:
+    enabled: true
+    version: 1.11.1
+    resources:
+      packageName: com.example.template.resources
+      exposedAccessors: true
+
+dependencies:
+  - //core: exported
+  - $libs.compose.material3
+  - $compose.foundation
+  - $compose.ui
+  - $libs.compose.uiToolingPreview
+  - $libs.androidx.lifecycle.viewmodelCompose
+  - $libs.androidx.lifecycle.runtimeCompose
+
+dependencies@js:
+  - $libs.wrappers.browser
+
+test-dependencies:
+  - $libs.kotlin.test

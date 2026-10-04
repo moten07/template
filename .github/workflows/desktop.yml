@@ -1,0 +1,31 @@
+name: desktop
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      KOTLIN_CLI_NO_WELCOME_BANNER: "1"
+    steps:
+      - uses: actions/checkout@v6.0.3
+      - run: |
+          ./kotlin package -m desktopApp
+      - uses: actions/upload-artifact@v7.0.1
+        with:
+          name: desktop-release-jar
+          path: app/desktopApp/build/**/*.jar
+#  windows-build:
+#    needs: setup
+#    runs-on: windows-latest
+#    steps:
+#      - run: |
+#          ./kotlin package -m desktopApp
+#  macos-build:
+#    needs: setup
+#    runs-on: macos-latest
+#    steps:
+#      - run: |
+#          ./kotlin package -m desktopApp

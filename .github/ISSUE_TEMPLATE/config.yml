@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Kotlin Multiplatform help
+    url: https://slack-chats.kotlinlang.org/c/compose-web
+    about: Questions about Compose/Web and Kotlin/Wasm belong in the community Slack.
+  - name: Report upstream CMP issues
+    url: https://youtrack.jetbrains.com/newIssue?project=CMP
+    about: If the bug is in Compose Multiplatform itself, file it on JetBrains YouTrack (project CMP).

@@ -1,0 +1,27 @@
+product: jvm/app
+
+layout: maven-like
+
+apply:
+  - //common.module-template.yaml
+
+settings:
+  jvm:
+    mainClass: com.example.template.ApplicationKt
+  ktor:
+    enabled: true
+    version: 3.5.0
+
+dependencies:
+  - //core: exported
+  - $libs.logback
+  - $libs.kotlin.stdlib.jdk7
+  - $libs.kotlin.stdlib.jdk8
+  - $libs.ktor.serverCore
+  - $libs.ktor.serverNetty
+  - $libs.ktor.serverConfigYaml
+  - $libs.ktor.serverContentNegotiation
+
+test-dependencies:
+  - $libs.ktor.serverTestHost
+  - $libs.kotlin.testJunit

@@ -1,0 +1,3 @@
+# Enable auto-env through the sdkman_auto_env config
+java=25
+kotlintoolchain=0.13.0

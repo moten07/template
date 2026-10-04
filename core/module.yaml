@@ -1,0 +1,15 @@
+product:
+  type: kmp/lib
+  platforms: [jvm, android, js, wasmJs, iosArm64, iosSimulatorArm64]
+
+apply:
+  - //common.module-template.yaml
+
+settings:
+  android:
+    namespace: com.example.template.core
+    compileSdk: 36
+    minSdk: 24
+
+test-dependencies:
+  - $libs.kotlin.test

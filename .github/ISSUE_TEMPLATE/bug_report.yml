@@ -1,0 +1,76 @@
+name: Bug report
+description: Report a defect in the template or one of its targets
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: target
+    attributes:
+      label: Affected target
+      description: Which part of the multiplatform project is affected?
+      options:
+        - Android (app/androidApp)
+        - iOS (app/iosApp)
+        - Web - Wasm (app/webApp)
+        - Web - JS (app/webApp)
+        - Desktop - JVM (app/desktopApp)
+        - Server - Ktor (server)
+        - Shared UI (app/shared)
+        - Core library (core)
+        - Build / Gradle / tooling
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Blocker (build/tests broken)
+        - Major (core feature broken)
+        - Minor (cosmetic / edge case)
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce it? Include the exact Gradle command or IDE action.
+      placeholder: |
+        1. Run `./gradlew :app:desktopApp:run`
+        2. Click on ...
+        3. See error
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, JDK version, Kotlin/CMP version, target device/simulator/browser.
+      placeholder: |
+        OS: Windows 11
+        JDK: Microsoft 21
+        Kotlin: 2.4.0 / CMP: 1.11.1 / Ktor: 3.5.0
+        Target: Desktop JVM / Chrome 126
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs / stack trace
+      description: Paste crash output or Gradle build errors. Use code fences.
+      render: shell
+    validations:
+      required: false

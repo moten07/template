@@ -1,0 +1,13 @@
+# Project-wide defaults applied by every module.
+settings:
+  kotlin:
+    version: 2.4.0
+
+repositories:
+  # maven.google.com is unreachable from some networks (e.g. CN); the Tencent mirror proxies
+  # Google's Maven repo (androidx, com.android, com.google, org.jetbrains.compose, …).
+  - id: mavenGoogle
+    url: https://mirrors.tencent.com/nexus/repository/maven-public/
+  # mavenCentral is NOT overridden: the mirror's published `.sha512` files are wrong for some
+  # artifacts (e.g. org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0), which fails the Kotlin
+  # Toolchain's checksum verification. Direct Maven Central works and verifies cleanly.
