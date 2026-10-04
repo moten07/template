@@ -18,11 +18,11 @@ dependencies {
 
 compose.desktop {
     application {
-        mainClass = "com.example.template.MainKt"
+        mainClass = "${libs.versions.pkg.get()}.MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.AppImage)
-            packageName = "com.example.template"
+            packageName = libs.versions.pkg.get()
             packageVersion = "1.0.0"
 //			outputBaseDir.set(project.layout.buildDirectory.dir("distributions"))
         }

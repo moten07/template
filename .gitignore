@@ -1,56 +1,63 @@
+# Xcode (keep project files, ignore user/derived data)
+*.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/project.xcworkspace/
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
-!src/**/build/
-**/build/
 **/xcshareddata/WorkspaceSettings.xcsettings
-*.apk
+xcuserdata/
+Carthage/Build/
+
+# Gradle / Kotlin / JVM
+.gradle/
+.kotlin/
+build/
+!src/**/build/
+.externalNativeBuild/
+.cxx/
 *.class
-*.ctxt
+*.jar
+*.log
+local.properties
+
+# IDE
+.idea/
+*.iml
+
+# Android
+*.apk
+*.ipa
+google-services.json
+captures/
+
+# iOS build artifacts
+*.hmap
 *.dSYM
 *.dSYM.zip
-*.ear
-*.hmap
+
+# Web
+node_modules/
+
+# JVM crash logs
+hs_err_pid*
+replay_pid*
+
+# Profiler / heap dumps
 *.hprof
-*.iml
-*.ipa
-*.jar
-*.jks
-*.keystore
-*.log
-*.nar
-*.rar
-*.tar.gz
-*.war
-*.xcodeproj/*
-*.zip
-.aiassistant
-.agent
-.DS_Store
-.build/
-.cxx/
-.externalNativeBuild/
-.gradle/
-.idea/
-.kotlin/
-.mtj.tmp/
-Carthage/Build/
-build/
-captures/
-deploymentTargetDropDown.xml
+
+# Fastlane
 fastlane/Preview.html
 fastlane/report.xml
 fastlane/screenshots/**/*.png
 fastlane/test_output
-google-services.json
-hs_err_pid*
-local.properties
-misc.xml
-node_modules/
-output.json
-playground.xcworkspace
-render.experimental.xml
-replay_pid*
-timeline.xctimeline
-xcuserdata/
+
+# Signing / keystores (do not commit)
+*.jks
+*.keystore
+
+# OS / editor cruft
+.DS_Store
+
+# Agent tooling
+.aiassistant
+/.qoder/

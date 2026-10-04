@@ -29,5 +29,5 @@ kotlin {
 }
 
 compose.resources {
-	packageOfResClass = "com.example.template.webapp.resources"
+	packageOfResClass = libs.versions.pkg.get() + ".webapp.resources"
 }

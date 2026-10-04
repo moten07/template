@@ -30,8 +30,8 @@ kotlin {
         browser()
     }
 
-    androidLibrary {
-        namespace = "com.example.template.app.shared"
+    android {
+        namespace = libs.versions.pkg.get() + ".app.shared"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
 
@@ -76,6 +76,6 @@ dependencies {
 
 compose.resources {
     publicResClass = true
-    packageOfResClass = "com.example.template.resources"
+    packageOfResClass = libs.versions.pkg.get() + ".resources"
     generateResClass = auto
 }

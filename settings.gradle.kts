@@ -3,15 +3,6 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
 	repositories {
-		maven {
-			name = "tencentGoogle"
-			url = uri("https://mirrors.tencent.com/nexus/repository/maven-public/")
-			content {
-				includeGroupAndSubgroups("androidx")
-				includeGroupAndSubgroups("com.android")
-				includeGroupAndSubgroups("com.google")
-			}
-		}
 		google {
 			mavenContent {
 				includeGroupAndSubgroups("androidx")
@@ -22,6 +13,15 @@ pluginManagement {
 		mavenCentral()
 		gradlePluginPortal()
 		maven {
+			name = "tencentGoogle"
+			url = uri("https://mirrors.tencent.com/nexus/repository/maven-public/")
+			content {
+				includeGroupAndSubgroups("androidx")
+				includeGroupAndSubgroups("com.android")
+				includeGroupAndSubgroups("com.google")
+			}
+		}
+		maven {
 			name = "tencent"
 			url = uri("https://mirrors.tencent.com/nexus/repository/gradle-plugins/")
 		}
@@ -30,10 +30,6 @@ pluginManagement {
 
 dependencyResolutionManagement {
 	repositories {
-		maven {
-			name = "tencent"
-			url = uri("https://mirrors.tencent.com/nexus/repository/maven-public/")
-		}
 		google {
 			mavenContent {
 				includeGroupAndSubgroups("androidx")
@@ -42,6 +38,10 @@ dependencyResolutionManagement {
 			}
 		}
 		mavenCentral()
+		maven {
+			name = "tencent"
+			url = uri("https://mirrors.tencent.com/nexus/repository/maven-public/")
+		}
 	}
 }
 

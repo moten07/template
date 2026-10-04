@@ -62,7 +62,7 @@ body:
       placeholder: |
         OS: Windows 11
         JDK: Microsoft 21
-        Kotlin: 2.4.0 / CMP: 1.11.1 / Ktor: 3.5.0
+        Kotlin: 2.4.20 / CMP: 1.11.1 / Ktor: 3.5.0
         Target: Desktop JVM / Chrome 126
     validations:
       required: false

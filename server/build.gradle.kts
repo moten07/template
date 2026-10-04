@@ -3,10 +3,10 @@ plugins {
     alias(libs.plugins.ktor)
 }
 
-group = "com.example.template"
+group = libs.versions.pkg.get()
 version = "1.0.0"
 application {
-    mainClass = "com.example.template.ApplicationKt"
+    mainClass = "${libs.versions.pkg.get()}.ApplicationKt"
 }
 
 dependencies {
