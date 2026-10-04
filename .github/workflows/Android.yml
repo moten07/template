@@ -1,0 +1,49 @@
+name: Android CI
+
+on:
+#  push:
+#    branches:
+#      - main
+  workflow_call:
+    # Declare secrets expected from callers so they are forwarded correctly.
+    # Callers must provide these in the `secrets:` mapping when using this reusable workflow.
+    secrets:
+      ANDROID_KEY_BASE64:
+        required: true
+      KEYSTORE_PASSWORD:
+        required: true
+      KEY_ALIAS:
+        required: true
+      KEY_PASSWORD:
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6.0.3
+      - uses: actions/setup-java@v5.2.0
+        with:
+          distribution: microsoft
+          java-version: 25
+      - run: |
+          # Decode the base64 keystore secret. Strip whitespace/newlines first to avoid an empty file
+          # when the secret contains newlines or trailing whitespace.
+          printf '%s' "${{ secrets.ANDROID_KEY_BASE64 }}" | tr -d ' \t\n\r' | base64 --decode > $GITHUB_WORKSPACE/release.jks
+#      - run: |
+#          keytool -list -v -keystore $GITHUB_WORKSPACE/release.jks -storepass "${{ secrets.KEYSTORE_PASSWORD }}"
+      - run: |
+          ./gradlew :app:androidApp:assembleRelease \
+          -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/release.jks \
+          -Pandroid.injected.signing.store.password=${{ secrets.KEYSTORE_PASSWORD }} \
+          -Pandroid.injected.signing.key.alias=${{ secrets.KEY_ALIAS }} \
+          -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }} \
+          --info
+      - uses: actions/upload-artifact@v7.0.1
+        with:
+            name: android-release-apk
+            path: app/androidApp/build/outputs/apk/release
+      - run: |
+          rm -f "$GITHUB_WORKSPACE/release.jks"

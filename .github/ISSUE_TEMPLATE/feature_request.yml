@@ -1,0 +1,54 @@
+name: Feature request
+description: Suggest a new capability or improvement for the template
+title: "[FEATURE] "
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Shared UI (app/shared)
+        - Core library (core)
+        - Server - Ktor (server)
+        - Android (app/androidApp)
+        - iOS (app/iosApp)
+        - Web (app/webApp)
+        - Desktop (app/desktopApp)
+        - Build / CI / tooling
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / motivation
+      description: What problem would this solve? Why is it needed?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the feature and how it should work across targets.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Target scope
+      description: Which targets must support this? (commonMain vs platform-specific)
+      placeholder: |
+        - [ ] commonMain (all targets)
+        - [ ] Android
+        - [ ] iOS
+        - [ ] Web (Wasm/JS)
+        - [ ] Desktop
+        - [ ] Server
+    validations:
+      required: false
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false

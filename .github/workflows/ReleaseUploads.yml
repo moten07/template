@@ -1,0 +1,55 @@
+name: Release uploads
+on:
+  push:
+    #    branches: [ "main" ]
+    # The condition is to push to the tag branch
+    tags: [ "v*" ]
+
+jobs:
+  android:
+    permissions:
+      contents: write
+    uses: ./.github/workflows/Android.yml
+    # Forward repository secrets to the reusable workflow. These must be set in the repository
+    # (Settings → Secrets and variables → Actions) for the workflow to receive non-empty values.
+    secrets:
+      ANDROID_KEY_BASE64: ${{ secrets.ANDROID_KEY_BASE64 }}
+      KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+  desktop:
+    permissions:
+      contents: write
+    uses: ./.github/workflows/desktop.yml
+
+  upload-release:
+    permissions:
+      contents: write
+    needs:
+      - android
+      - desktop
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: android-release-apk
+          path: artifacts/android
+      - uses: actions/download-artifact@v8
+        with:
+          name: desktop-release-AppImage
+          path: artifacts/desktop
+
+      - uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref }}
+          name: Release ${{ github.ref }}
+          files: |
+            artifacts/android/*
+            artifacts/desktop/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/checkout@v6.0.3
+      - run: |
+          ./gradlew clean
+
